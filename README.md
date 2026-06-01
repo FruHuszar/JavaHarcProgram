@@ -6,8 +6,7 @@
 
 ## Főbb funkciók
 
-- **2 játékos 2D játék** — ...
-- **Scoreboard** — ...
+- **2 játékos Versenyez egymással, de egyedül is játszható** — ...
 
 ---
 
@@ -19,3 +18,10 @@
 | GUI           | Swing?                                |
 
 ---
+
+## Továbbfejlesztés
+
+? Irány választása dobás előtt
+? Fogadás, hogy ki fog nyerni
+? Scoreboard
+? Custom játékosnév és kép

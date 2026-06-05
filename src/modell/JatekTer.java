@@ -5,7 +5,6 @@ public class JatekTer {
     private Harcos harcos;
     private Varazslo varazslo;
     private Kocka kocka;
-    private boolean harcosKore;
     private boolean jatekVege;
     private String utolsoEsemeny;
 
@@ -13,9 +12,8 @@ public class JatekTer {
         harcos = new Harcos("Harcos");
         varazslo = new Varazslo("Varazslo");
         kocka = new Kocka(6);
-        harcosKore = true;
         jatekVege = false;
-        utolsoEsemeny = "A jatek elkezdodott! A Harcos kezd.";
+        utolsoEsemeny = "A jatek elkezdodott!";
     }
 
     public String korLejatszasa() {
@@ -23,28 +21,26 @@ public class JatekTer {
             return utolsoEsemeny;
         }
 
-        Jatekos tamado;
-        Jatekos vedekezo;
+        int harcosDobase = kocka.dobas();
+        int varazsloDobase = kocka.dobas();
 
-        if (harcosKore) {
-            tamado = harcos;
-            vedekezo = varazslo;
+        String esemeny = harcos.getNev() + " dobott: " + harcosDobase + "\n";
+        esemeny += varazslo.getNev() + " dobott: " + varazsloDobase + "\n";
+
+        if (harcosDobase > varazsloDobase) {
+            esemeny += harc(harcos, varazslo, harcosDobase);
+        } else if (varazsloDobase > harcosDobase) {
+            esemeny += harc(varazslo, harcos, varazsloDobase);
         } else {
-            tamado = varazslo;
-            vedekezo = harcos;
+            esemeny += "Dontetlen! Senki nem sebez ebben a korben.";
         }
 
-        int dobottErtek = kocka.dobas();
-        String esemeny = tamado.getNev() + " dobott: " + dobottErtek + "\n";
-        esemeny += harc(tamado, vedekezo, dobottErtek);
-
-        if (!vedekezo.isElo()) {
+        if (!harcos.isElo()) {
             jatekVege = true;
-            esemeny += "\n" + tamado.getNev() + " nyert!";
-        } else {
-            harcosKore = !harcosKore;
-            Jatekos kovetkezo = harcosKore ? harcos : varazslo;
-            esemeny += "\nKovetkezo: " + kovetkezo.getNev();
+            esemeny += "\n" + varazslo.getNev() + " nyert!";
+        } else if (!varazslo.isElo()) {
+            jatekVege = true;
+            esemeny += "\n" + harcos.getNev() + " nyert!";
         }
 
         utolsoEsemeny = esemeny;
@@ -82,15 +78,13 @@ public class JatekTer {
     public void ujJatek() {
         harcos = new Harcos("Harcos");
         varazslo = new Varazslo("Varazslo");
-        harcosKore = true;
         jatekVege = false;
-        utolsoEsemeny = "A jatek elkezdodott! A Harcos kezd.";
+        utolsoEsemeny = "A jatek elkezdodott!";
     }
 
     public Harcos getHarcos() { return harcos; }
     public Varazslo getVarazslo() { return varazslo; }
     public boolean isJatekVege() { return jatekVege; }
-    public boolean isHarcosKore() { return harcosKore; }
     public String getUtolsoEsemeny() { return utolsoEsemeny; }
 
     public String getGyoztes() {

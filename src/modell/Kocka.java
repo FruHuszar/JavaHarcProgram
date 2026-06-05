@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modell;
 
-/**
- *
- * @author hrvth
- */
+import java.util.Random;
+
 public class Kocka {
-    
+
+    private Random random;
+    private int lapok;
+
+    public Kocka(int lapok) {
+        this.lapok = lapok;
+        this.random = new Random();
+    }
+
+    public int dobas() {
+        return random.nextInt(lapok) + 1;
+    }
+
+    public int getLapok() { return lapok; }
 }

@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modell;
 
-/**
- *
- * @author hrvth
- */
-public class Varazslo {
-    
+public class Varazslo extends Jatekos {
+
+    private int varazsEro;
+
+    public Varazslo(String nev) {
+        super(nev, 80, 10);
+        this.varazsEro = 20;
+    }
+
+    @Override
+    public int specialisKepesseg() {
+        return varazsEro;
+    }
+
+    public int getVarazsEro() { return varazsEro; }
 }

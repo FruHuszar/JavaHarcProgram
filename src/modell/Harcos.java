@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modell;
 
-/**
- *
- * @author hrvth
- */
-public class Harcos {
-    
+public class Harcos extends Jatekos {
+
+    private int pajzs;
+
+    public Harcos(String nev) {
+        super(nev, 100, 15);
+        this.pajzs = 10;
+    }
+
+    @Override
+    public int specialisKepesseg() {
+        return pajzs;
+    }
+
+    public int getPajzs() { return pajzs; }
 }
